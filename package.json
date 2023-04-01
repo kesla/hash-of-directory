@@ -1,6 +1,6 @@
 {
   "name": "hash-of-directory",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "type": "module",
   "devDependencies": {
     "@types/node": "~18.15.11",
