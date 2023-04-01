@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync } from "fs";
 import { tmpdir } from "os";
 import path from "path";
-import test from 'ava';
+import test from "ava";
 
 import { hashOfDirectory } from "../src/index.js";
 
@@ -79,4 +79,20 @@ test("dir with nested files", async (t) => {
   t.not(hash, emptyDirHash);
   t.not(hash, singleFileHash);
   t.not(hash, singleDirHash);
+});
+
+test("custom algorithm", async (t) => {
+  const dir = createTmpDir();
+  const defaultHash = await hashOfDirectory(dir);
+  const customHash = await hashOfDirectory(dir, { algorithm: "sha1" });
+
+  t.not(defaultHash, customHash);
+});
+
+test("custom encoding", async (t) => {
+  const dir = createTmpDir();
+  const defaultHash = await hashOfDirectory(dir);
+  const customHash = await hashOfDirectory(dir, { encoding: "hex" });
+
+  t.not(defaultHash, customHash);
 });

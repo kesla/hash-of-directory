@@ -16,8 +16,13 @@ const calculate = async (dir: string, hash: Hash) => {
   }
 };
 
-export const hashOfDirectory = async (dir: string, encoding: BinaryToTextEncoding = 'base64') => {
-  const hash = createHash("sha256");
+export const hashOfDirectory = async (
+  dir: string,
+  opts: { algorithm?: string; encoding?: BinaryToTextEncoding } = {}
+) => {
+  const { algorithm = "sha256", encoding = "base64" } = opts;
+
+  const hash = createHash(algorithm);
   await calculate(dir, hash);
   return hash.digest(encoding);
 };
