@@ -9,7 +9,7 @@
     "typescript": "~5.0.3"
   },
   "scripts": {
-    "build": "rm -rf build && tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json",
+    "build": "rm -rf build && tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json",
     "test": "ava"
   },
   "ava": {
@@ -20,20 +20,9 @@
       "--loader=ts-node/esm"
     ]
   },
-  "types": "./src/index.ts",
-  "exports": "./src/index.ts",
-  "publishConfig": {
-    "exports": {
-      ".": {
-        "import": {
-          "types": "./build/esm/index.d.ts",
-          "default": "./build/esm/index.js"
-        },
-        "require": {
-          "types": "./build/cjs/index.d.ts",
-          "default": "./build/cjs/index.js"
-        }
-      }
-    }
-  }
+  "exports": {
+    "import": "./build/esm/index.js",
+    "require": "./build/cjs/index.js"
+  },
+  "types": "./build/types/index.d.ts"
 }
