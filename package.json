@@ -9,7 +9,7 @@
     "typescript": "~5.0.3"
   },
   "scripts": {
-    "build": "rm -rf build && tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json",
+    "build": "rm -rf build && tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json && mv ./build/cjs/index.js ./build/cjs/index.cjs",
     "test": "ava",
     "prepublishOnly": "npm run build"
   },
@@ -23,7 +23,7 @@
   },
   "exports": {
     "import": "./build/esm/index.js",
-    "require": "./build/cjs/index.js"
+    "require": "./build/cjs/index.cjs"
   },
   "types": "./build/types/index.d.ts"
 }
