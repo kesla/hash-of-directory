@@ -1,0 +1,39 @@
+{
+  "name": "hash-of-directory",
+  "version": "0.0.0",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "~18.15.11",
+    "ava": "^5.2.0",
+    "ts-node": "^10.9.1",
+    "typescript": "~5.0.3"
+  },
+  "scripts": {
+    "build": "rm -rf build && tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json",
+    "test": "ava"
+  },
+  "ava": {
+    "extensions": {
+      "ts": "module"
+    },
+    "nodeArguments": [
+      "--loader=ts-node/esm"
+    ]
+  },
+  "types": "./src/index.ts",
+  "exports": "./src/index.ts",
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "import": {
+          "types": "./build/esm/index.d.ts",
+          "default": "./build/esm/index.js"
+        },
+        "require": {
+          "types": "./build/cjs/index.d.ts",
+          "default": "./build/cjs/index.js"
+        }
+      }
+    }
+  }
+}
