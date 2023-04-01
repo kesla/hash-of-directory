@@ -10,7 +10,8 @@
   },
   "scripts": {
     "build": "rm -rf build && tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json",
-    "test": "ava"
+    "test": "ava",
+    "prepublishOnly": "npm run build"
   },
   "ava": {
     "extensions": {
