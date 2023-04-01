@@ -25,5 +25,6 @@
     "import": "./build/esm/index.js",
     "require": "./build/cjs/index.cjs"
   },
-  "types": "./build/types/index.d.ts"
+  "types": "./build/types/index.d.ts",
+  "license": "MIT"
 }
